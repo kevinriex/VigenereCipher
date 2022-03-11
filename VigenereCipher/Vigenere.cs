@@ -45,7 +45,7 @@ namespace VigenereCipher
             List<char> sentenceL = sentence.ToList();
             List<char> keyL = key.ToList();
             keylen(sentenceL, keyL);
-            printLists(sentenceL, keyL);
+            //printLists(sentenceL, keyL);
 
             List<int> awsLint = new List<int>();
             List<Array> mixed = new List<Array>();
@@ -63,7 +63,7 @@ namespace VigenereCipher
             //    {
             //        awsLint.Add(getViginereCharIndex(s, k));
             //    }
-                
+
             //}
             foreach (var item in awsLint)
             {
@@ -76,6 +76,7 @@ namespace VigenereCipher
                 aws = aws + a;
             }
             aws = aws.ToLower();
+            Console.WriteLine("\nThe Encoded Message is:");
             Console.WriteLine(aws);
             return aws;
         }
@@ -97,16 +98,23 @@ namespace VigenereCipher
         private static void keylen(List<char> sentenceL, List<char> keyL)
         {
             int max = keyL.Count;
-            while (sentenceL.Count != keyL.Count)
+            if (sentenceL.Count > keyL.Count)
             {
-                if (sentenceL.Count - keyL.Count < max)
+                while (sentenceL.Count != keyL.Count)
                 {
-                    max = sentenceL.Count - keyL.Count;
+                    if (sentenceL.Count - keyL.Count < max)
+                    {
+                        max = sentenceL.Count - keyL.Count;
+                    }
+                    for (int i = 0; i < max; i++)
+                    {
+                        keyL.Add(keyL[i]);
+                    }
                 }
-                for (int i = 0; i < max; i++)
-                {
-                    keyL.Add(keyL[i]);
-                }
+            }
+            else
+            {
+                keyL.RemoveRange(sentenceL.Count, keyL.Count - sentenceL.Count);
             }
         }
     }

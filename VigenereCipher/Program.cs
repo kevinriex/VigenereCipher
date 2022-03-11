@@ -9,7 +9,14 @@
             Console.WriteLine("#################################");
             Console.WriteLine("\n\n");
 
-            Vigenere.start("herrjordanistnett", "zwerg");
+            Console.WriteLine("Please enter a Sentence (without Spaces):");
+            string ein = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("Plase enter a Keyword");
+            string key = Convert.ToString(Console.ReadLine());
+
+
+            // Vigenere.start("herrjordanistnett", "zwerg");
+            Vigenere.start(ein, key);
         }
     }
 }
