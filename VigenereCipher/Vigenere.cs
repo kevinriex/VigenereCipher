@@ -40,11 +40,7 @@ namespace VigenereCipher
             int clearIndex = getCharIndex(clear);
             int keyIndex = getCharIndex(key);
             index = clearIndex + keyIndex;
-            if (index > 25) // Wenn die Beiden Indexe größer als das Alphabet sind fängt er wieder vorne an.
-            {
-                index = index - 26;
-            }
-            return index;
+            return index % 26;
         }
         /// <summary>
         /// Startet die Viginere Verschlüsselung
